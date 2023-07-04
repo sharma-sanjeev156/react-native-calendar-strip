@@ -150,6 +150,10 @@ interface CalendarStripProps {
   headerText?: string;
 
   ref?: RefObject<any>;
+  updateMonthYear?:((start: Moment, end: Moment) => void);
+  weekStartDate:object,
+  weekEndDate: object,
+
 }
 
 export default class ReactNativeCalendarStrip extends Component<CalendarStripProps> {

@@ -95,6 +95,9 @@ class CalendarStrip extends Component {
     shouldAllowFontScaling: PropTypes.bool,
     useNativeDriver: PropTypes.bool,
     upperCaseDays: PropTypes.bool,
+    updateMonthYear:PropTypes.func,
+    weekStartDate: PropTypes.object,
+    weekEndDate: PropTypes.object,
   };
 
   static defaultProps = {
@@ -413,6 +416,7 @@ class CalendarStrip extends Component {
       weekStartDate,
       weekEndDate,
     });
+    this.props.updateMonthYear && this.props.updateMonthYear(weekStartDate, weekEndDate);
   }
 
   createDayProps = selectedDate => {
@@ -539,8 +543,8 @@ class CalendarStrip extends Component {
         calendarHeaderContainerStyle={this.props.calendarHeaderContainerStyle}
         calendarHeaderStyle={this.props.calendarHeaderStyle}
         onHeaderSelected={this.props.onHeaderSelected}
-        weekStartDate={this.state.weekStartDate}
-        weekEndDate={this.state.weekEndDate}
+        weekStartDate={this.props.weekStartDate?this.props.weekStartDate :this.state.weekStartDate}
+        weekEndDate={this.props.weekEndDate?this.props.weekEndDate:this.state.weekEndDate}
         fontSize={this.state.monthFontSize}
         allowHeaderTextScaling={this.props.shouldAllowFontScaling}
         headerText={this.props.headerText}
@@ -598,8 +602,8 @@ class CalendarStrip extends Component {
               iconStyle={this.props.iconStyle}
               imageSource={this.props.iconLeft}
               onPress={this.getPreviousWeek}
-              weekStartDate={this.state.weekStartDate}
-              weekEndDate={this.state.weekEndDate}
+              weekStartDate={this.props.weekStartDate?this.props.weekStartDate :this.state.weekStartDate}
+              weekEndDate={this.props.weekEndDate?this.props.weekEndDate:this.state.weekEndDate}
               size={this.state.selectorSize}
             />
 
@@ -619,8 +623,8 @@ class CalendarStrip extends Component {
               iconStyle={this.props.iconStyle}
               imageSource={this.props.iconRight}
               onPress={this.getNextWeek}
-              weekStartDate={this.state.weekStartDate}
-              weekEndDate={this.state.weekEndDate}
+              weekStartDate={this.props.weekStartDate?this.props.weekStartDate :this.state.weekStartDate}
+              weekEndDate={this.props.weekEndDate?this.props.weekEndDate:this.state.weekEndDate}
               size={this.state.selectorSize}
             />
           </View>
