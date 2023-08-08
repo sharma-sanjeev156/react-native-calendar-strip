@@ -127,7 +127,7 @@ class CalendarStrip extends Component {
 
   constructor(props) {
     super(props);
-    this.numDaysScroll = 366; // prefer even number divisible by 3
+    this.numDaysScroll = 9999; // prefer even number divisible by 3
 
     if (props.locale) {
       if (props.locale.name && props.locale.config) {
