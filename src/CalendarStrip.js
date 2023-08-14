@@ -4,7 +4,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { View, Animated, PixelRatio } from "react-native";
+import { View, Animated, PixelRatio, Platform } from "react-native";
 
 import moment from "moment";
 
@@ -127,7 +127,7 @@ class CalendarStrip extends Component {
 
   constructor(props) {
     super(props);
-    this.numDaysScroll = 2196; // prefer even number divisible by 3
+    this.numDaysScroll = Platform.OS == 'android'? 366 : 2196; // prefer even number divisible by 3
 
     if (props.locale) {
       if (props.locale.name && props.locale.config) {
