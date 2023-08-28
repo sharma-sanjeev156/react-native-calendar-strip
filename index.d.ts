@@ -153,6 +153,7 @@ interface CalendarStripProps {
   updateMonthYear?:((start: Moment, end: Moment) => void);
   weekStartDate:object,
   weekEndDate: object,
+  refreshDays?: boolean;
 
 }
 
