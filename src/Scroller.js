@@ -254,19 +254,19 @@ export default class CalendarScroller extends Component {
     if (visibleStartIndex === 0 ) {
       this.shiftDaysBackward(visibleStartDate);
     }
-    else if (this.props.refreshDays && visibleStartIndex - 30 <= 0 ) {
+    else if ((this.props.refreshDays && visibleStartIndex - 30 <= 0) || visibleStartIndex - 30 <= 0) {
       this.shiftDaysBackward(this.props.weekStartDate);
     }
     else {
       const minEndOffset = numDays - numVisibleItems;
       if (minEndOffset > numVisibleItems
-        ||  (this.props.refreshDays && visibleEndIndex + 30 >= 366 )
+        ||  ((this.props.refreshDays && visibleEndIndex + 30 >= 366) || visibleEndIndex + 30 >= 366 )
          ) {
         for (let a of all) {
           if (a > minEndOffset) {
             this.shiftDaysForward(visibleStartDate || this.props.weekStartDate);
             break;
-          }else if((this.props.refreshDays && visibleEndIndex + 30 > 366)){
+          }else if((this.props.refreshDays && visibleEndIndex + 30 >= 366) || visibleEndIndex + 30 >= 366 ){
             this.shiftDaysForward(this.props.weekStartDate);
           }
         }
